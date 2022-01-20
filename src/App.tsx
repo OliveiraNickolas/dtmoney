@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import { Dashboard } from "./components/Dashboard";
 import { Header } from "./components/Header";
 import { NewTransactionModal } from "./components/NewTransactionModal";
+import { TransactionsContext } from './TransactionsContext'
 
 import { GlobalStyle } from "./styles/global";
 
@@ -23,10 +24,9 @@ export function App() {
   // o filho Header que por sua vez consegue passar tudo pro seu filho Button
 
   return (
-    <>
+    <TransactionsContext.Provider value={[]}>
       <Header  onOpenNewTransactionModal={handleOpenNewTransactionModal}/>
       {/* Essas propriedades estão aqui pois o Button dentro do Header precisa receber as funções para abrir o modal */}
-
 
       <Dashboard />
 
@@ -37,6 +37,6 @@ export function App() {
       />
 
       <GlobalStyle />
-    </>
+    </TransactionsContext.Provider>
   );
 }
